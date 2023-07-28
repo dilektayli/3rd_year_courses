@@ -1,0 +1,56 @@
+#include "stm32f10x.h"
+#include <stdio.h>
+
+int main(void)
+{
+  RCC->APB2ENR |= 0x0004; // ...000100
+
+  GPIOA->CRL = 0x44442444;
+
+  // binary counter loop
+  int number = 0;
+  while (1)
+  {
+  
+    number = (number + 1) & 0x03;
+		
+		switch (number)
+{
+    case 0:
+			//GPIOA->ODR = 0x00000000;
+      break;
+
+    case 1:
+			for(int i=0; i<1; i++){
+				GPIOA->ODR = 0x00000008;
+				GPIOA->ODR = 0x00000000;
+			}
+      break;
+		
+		case 2:
+			for(int i=0; i<2; i++){
+				GPIOA->ODR = 0x00000008;
+				GPIOA->ODR = 0x00000000;
+			}
+      break;
+		
+		case 3:
+			for(int i=0; i<3; i++){
+				GPIOA->ODR = 0x00000008;
+				GPIOA->ODR = 0x00000000;
+			}
+
+      break;
+ 
+}
+		
+		
+
+
+    // wait for a short delay using a simple loop
+    for (int i = 0; i < 0x100000; i++)
+      ;
+  }
+
+  return 0;
+}

@@ -1,0 +1,34 @@
+01. chmod 700 quote_demo
+02. 
+03. touch boy
+04. ls -la boy
+05. ls -l /bin/bash
+06. chmod 600 boy 
+    ls -l boy
+07. chmod 444 boy
+08. umask 0066 
+    touch test
+    ls -l test
+09. chmod 311 quote_demo 
+    ./quote_demo
+10. who am i
+11. mkdir dir1 
+    chmod 100 dir1
+    ls -l dir1
+12. ls -ld dir1
+13. chmod 500 dir1
+    ls -l dir1
+14. chmod 300 dir1
+    touch dir1/notes
+    ls -l dir1/notes
+15. chmod 100 dir1 
+    echo "1" > dir1/notes
+    cat dir1/notes
+    cd dir1
+    touch notes2
+16. id -g -n dtayli
+    chmod 700 dir1/notes
+17. history |grep chmod
+18.
+19.
+20.

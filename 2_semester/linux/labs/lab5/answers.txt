@@ -1,0 +1,22 @@
+01. This command will list all the files and directories within my home directory. We can see both hidden and non-hidden files and directories. Additionally, we would be able to see the subdirectories and files in these subdirectories. 
+02. find ~ -type f
+03. find ~ -type d
+04. find ~ | wc -l   
+Output is 664
+05. find ~ \( -type f -not -perm 0600 \) -or  \( -type d -name "D*" \)
+06. find ~ -type f -name "*.zip" -delete
+07. find ~ -type f -name "*.zip" -exec rm '{}' ';'
+08. find ~ -type f -name "*.zip" | xargs ls -al
+09. find ~ -type f -name "*.zip" -print0 | xargs --null ls -al
+10. stat playground/dir-001/file-A
+This command will display the updates in the files with the following details: type of file, inode number, permissions, owner, size, timestamps, time for the creation of the file, and file flags. 
+11. find playground  -type f -name 'file-A' -exec touch '{}' ';' 
+12. find playground -type f -newer playground/timestamp
+13. find playground \( -type f -not -perm 0600 -exec chmod 0600 '{}' ';' \) -or \( -type d -not -perm 0700 -exec chmod 0700 '{}' ';' \)
+14. find ~ -maxdepth 1 -type f
+15. find /usr/bin -mtime +900 -type f
+16. find /usr/bin -mtime -900 -type f
+17. find ~ -size -100c -type f
+18. find /bin -type l -name "*sh*"
+19. find /bin -type l -name "*sh*" -exec ls -l '{}'  ';'
+20. find /usr -type f | head -n 10

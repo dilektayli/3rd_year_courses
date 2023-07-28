@@ -1,0 +1,20 @@
+01. grep -E '4[1-9]|49' grades.txt
+02. grep '^a' grades.txt
+03. grep -iE '^a|^b' grades.txt
+04. grep -iE '^a|^b' grades.txt | grep -E '4[1-5]'
+05. grep '^[A-Z]' grades.txt
+06. grep -E '^[A-Z].*(8[0-9]|9[0-9]|100)$' grades.txt
+07. grep '^[A-Z][a-z]\{4\}' grades.txt
+08. ls -l | grep '^d'
+09. ls -l | grep -v '^d'
+10. grep '/bin/bash' /etc/passwd
+11. ls -l | grep 'May'
+12. ps aux | grep -c dtayli
+13. ps aux | grep -cv '^dtayli'
+14. grep -v '^$' grades.txt > output.txt
+15. grep -E '\([0-9]{3}\) [0-9]{3}-[0-9]{4}' phonelist.txt
+16. grep -E '[0-9]{3} [0-9]{3}-[0-9]{4}' phonelist.txt
+17. grep -E '(\([0-9]{3}\) [0-9]{3}-[0-9]{4})|([0-9]{3} [0-9]{3}-[0-9]{4})' phonelist.txt
+18. grep -Ev '(\([0-9]{3}\) [0-9]{3}-[0-9]{4})|([0-9]{3} [0-9]{3}-[0-9]{4})' phonelist.txt
+19. grep -E '(555|507) [0-9]{3}-[0-9]{4}' phonelist.txt
+20. Displays the number of lines and the values in the line 

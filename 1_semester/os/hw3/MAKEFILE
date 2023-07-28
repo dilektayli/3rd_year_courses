@@ -1,0 +1,6 @@
+phsp: barber.c
+	gcc barber.c -o barber -lm
+	./barber 2 2 2 2
+
+clean:c
+	rm -rf *o hello.txt

@@ -1,0 +1,30 @@
+01. ls -l ls-usr-bin.txt
+138912 bytes
+02. gzip ls-usr-bin.txt     gzip -l ls-usr-bin.txt.gz
+compressed -> 25042  ratio -> 82.0%       
+03. gunzip -c ls-usr-bin.txt.gz | less
+04. gunzip ls-usr-bin.txt.gz
+No, it replaces the original file with compressed one. 
+05. bzip2 ls-usr-bin.txt    ls -l ls-usr-bin.txt.bz2
+19252 bytes -> better 
+06. zip ls-usr-bin.zip   ls-usr-bin.txt
+82%
+07. tar czf ls-usr-bin.tgz ls-usr-bin.txt    gzip -l ls-usr-bin.tgz
+82.5%
+08. tar -cvjf ls-usr-bin.tbz ls-usr-bin.txt    bzip2 -v ls-usr-bin.tbz
+82%
+09. find /usr/bin -name '*zip*' -type f -print0 | tar -czvf zip-files.tar.gz --null -T -
+10. grep -n zip dirlist*
+11.  grep -l zip dirlist*
+12. grep -Hn 'zip' dirlist-*
+13. grep -L "zip" dirlist* | xargs grep -nv "zip"
+14. grep -L "zip" dirlist*
+15. grep -r -c zip dirlist* | grep -v ':0$'
+16. grep -c "Remote" /etc/services
+6
+17. grep -c "send" /etc/services   grep -cw "send" /etc/services
+1
+18.grep -ic "send" /etc/services
+1
+19. grep -v "send" /etc/services | wc -l
+20. grep -wR '27' /usr/share | grep -v '/usr/share/locale/' | head -n 10

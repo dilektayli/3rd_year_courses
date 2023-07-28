@@ -1,0 +1,123 @@
+.data 
+	str: .asciz "enter the size of the array: "
+	str2: .asciz "enter element: "
+	space: .asciz " "
+.text 
+.globl main
+
+main:
+
+	#;;;;;;;;;;;;;;;;; PRINTING INTEGER
+	#li a0, 0
+	#add a0,t3,x0 
+        #li a7, 1
+        #ecall
+        #;;;;;;;;;;;;;;;;;
+        
+	#print "enter the size of the array: "
+	li a7, 4
+	la a0, str
+	ecall
+	
+	#get the size from the user
+	li a7, 5  
+	ecall
+	add t0, a0, zero  #t0 is the length of the array
+	
+	li t1,0 # i value for iteration	
+	add s0, x0,sp # base address for array for initializing array
+	addi s1, sp,0 # base address for array for sorting array
+
+
+start_array:
+	bge t1,t0,sort_array #  check i is bigger than array length( t1>t0)
+	
+	# print "enter element: "
+	li a7, 4
+	la a0, str2
+	ecall
+	
+	#getting elements from the user
+	li a7,5
+	ecall
+	add t3,a0,x0 # t3 is the element that currently given by the user.
+	
+	# adding to the array ;;;;;;;;;;;;
+	addi s0,s0,4
+	sw a0,(s0)
+	#;;;;;;;;;;;;;;;
+	
+	
+	addi t1,t1,1 #i++ for loop
+	j start_array
+
+
+
+
+sort_array: #TO BE CONTIUNED, just printing the array right now. I had issue while getting the values from the stored array. 
+
+	add s0,s1,zero
+	addi s0,s0,-4
+	add t2,x0,x0
+	add s8,x0,x0
+
+	outer_loop:
+		addi s0,s0,4
+		addi t1,t1,1 # iteration value
+		
+		
+		bne  t0,t1,print_array #to show that the program can get the array from the user and print it
+		
+		add t2, t1,x0
+		addi s1,s0,0 
+		
+		lw t3,(s0)
+		addi t5,t3,0
+		addi t6,s0,0
+		
+
+		j inner_loop
+		
+	inner_loop:
+		addi t2,t2,1
+		addi s1,s1,4
+		addi s10,t2,-1
+		bge s10,t0,change
+		lw t4,(s1)
+		bge t4,t5,inner_loop
+		addi t5,t4,0
+		addi t6,s1,0
+		j inner_loop
+	
+	change:
+		sw t5,(s0)
+		sw t3, (t6)
+		j outer_loop
+		
+print_array:
+	bge t5,t0,exit
+	addi sp,sp,4
+	ld t6,0(sp)
+
+
+	#print array element
+	li a0, 0
+	add a0,t6,x0 
+        li a7, 1
+        ecall
+	
+	
+	#print space
+	li a7, 4
+	la a0, space
+	ecall
+	
+        addi t5,t5,1 #increment iteration value
+        j print_array
+	
+	
+exit:
+	li a7,10
+	ecall 
+        
+	

@@ -1,0 +1,71 @@
+.data 
+	str: .asciz "enter the size of the array: "
+	str2: .asciz "enter element: "
+.text 
+.globl main
+
+main:
+
+	#;;;;;;;;;;;;;;;;; PRINTING INTEGER
+	#li a0, 0
+	#add a0,t3,x0 
+        #li a7, 1
+        #ecall
+        #;;;;;;;;;;;;;;;;;
+        
+        
+        
+	#print "enter the size of the array: "
+	li a7, 4
+	la a0, str
+	ecall
+	
+	#get the size from the user
+	li a7, 5  
+	ecall
+	add t0, a0, zero  #t0 is the length of the array
+	
+	slli a0,a7,2
+	li a7,9
+	ecall 
+	
+	# memory allocating 
+	slli a0,a7,2
+	li a7,9
+	ecall
+	
+	li t1,0 # i value for iteration
+	addi t2, a7,0
+	
+	
+	
+	addi t1,t1,0
+	addi t2,a7,0
+	addi t6,a7,0
+	addi a1,a7,0
+	
+start_array:
+	bge t1,t0,end_array #  check array length is bigger than 0 ( t1>t0)
+	
+	# print "enter element: "
+	li a7, 4
+	la a0, str2
+	ecall
+	
+	#getting elements from the user
+	li a7,5
+	ecall
+	#add t3,a0,x0 # t3 is the element that currently given by the user.
+	#sd a7,0(t3)
+	sd a7,0(t2)
+
+	addi t1,t1,1 #i++ for loop
+	addi t2,t2,8 
+	j start_array
+
+
+end_array: #to be contiuned
+	addi t0,t0,1
+        
+        
+	

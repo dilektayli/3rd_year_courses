@@ -1,0 +1,20 @@
+01. sort food.txt
+02. sort -r food.txt
+03. sort --key=2 food.txt
+04. sort -b -k3 food.txt
+05. If I don't use the -b opiton for the previous command, it will consider the number of leading spaces while sorting. For now, I have the same result because I left 2 blanks after words intentionally. 
+06. sort -nr -k4 food.txt > calo.txt
+07. sort -g -k3,3 -k4,4rg food.txt
+08. du -s /usr/bin/* | sort -rn
+09. ls -l /usr/bin/* | sort -k5rn
+10. cat food.txt | tr -s ' ' | cut -d ' ' -f 4
+11. cut -c 1 food.txt
+12. cut -d ' ' -f 1-2 food.txt > names.txt
+13. cat food.txt | tr -s ' ' | cut -d ' ' -f 3 > costs.txt
+14. paste names.txt costs.txt > food_2.txt
+15. cat food.txt | sed 's/tea/coffee/g' > food_3.txt
+16. cat food.txt | sed '5s/tea/coffee/' > food_4.txt
+17. sed -n '1,5p' food.txt
+18. sed -n '/apple/p' food.txt
+19. If I do not include -n option, the command will display all the content of food.txt. By adding the option, the automatic printing will be suppressed. In other words, only lines with "apple" will be displayed with the option, otherwise all the lines will be displayed. 
+20. cat food.txt | sed '/tea/d' > food_5.txt
